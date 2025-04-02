@@ -16,6 +16,9 @@
 		3859808F2D9DC5DA000B4E83 /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3859808E2D9DC5DA000B4E83 /* CardStackView.swift */; };
 		385980912D9DC5F9000B4E83 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980902D9DC5F9000B4E83 /* UserProfileView.swift */; };
 		385980932D9DC61A000B4E83 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980922D9DC61A000B4E83 /* MatchesView.swift */; };
+		385980962D9E0001000B4E83 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980952D9E0001000B4E83 /* LoginView.swift */; };
+		385980982D9E0014000B4E83 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980972D9E0014000B4E83 /* RegistrationView.swift */; };
+		3859809A2D9E001F000B4E83 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980992D9E001F000B4E83 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		3859808E2D9DC5DA000B4E83 /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		385980902D9DC5F9000B4E83 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		385980922D9DC61A000B4E83 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
+		385980952D9E0001000B4E83 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		385980972D9E0014000B4E83 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		385980992D9E001F000B4E83 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 		385980852D9DC3FC000B4E83 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				385980992D9E001F000B4E83 /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -118,6 +125,7 @@
 		385980862D9DC429000B4E83 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				385980952D9E0001000B4E83 /* LoginView.swift */,
 				385980942D9DC6F3000B4E83 /* Registration */,
 			);
 			path = Login;
@@ -150,6 +158,7 @@
 		385980942D9DC6F3000B4E83 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				385980972D9E0014000B4E83 /* RegistrationView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -227,12 +236,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3859809A2D9E001F000B4E83 /* AuthViewModel.swift in Sources */,
 				3859808F2D9DC5DA000B4E83 /* CardStackView.swift in Sources */,
 				385980932D9DC61A000B4E83 /* MatchesView.swift in Sources */,
 				3859807E2D9DC345000B4E83 /* ContentView.swift in Sources */,
+				385980982D9E0014000B4E83 /* RegistrationView.swift in Sources */,
 				3859808C2D9DC50F000B4E83 /* MainView.swift in Sources */,
 				3859807F2D9DC345000B4E83 /* iOS_TwoQApp.swift in Sources */,
 				3859808A2D9DC477000B4E83 /* User.swift in Sources */,
+				385980962D9E0001000B4E83 /* LoginView.swift in Sources */,
 				385980912D9DC5F9000B4E83 /* UserProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

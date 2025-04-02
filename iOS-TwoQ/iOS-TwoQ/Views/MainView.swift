@@ -11,15 +11,15 @@ struct MainView: View {
     var body: some View {
         TabView {
             CardStackView()
-                .tabItem { Image(systemName: "square.and.arrow.up") }
+                .tabItem { Image(systemName: "binoculars.fill") }
                 .tag(0)
             
             MatchesView()
-                .tabItem { Image(systemName: "person.3") }
+                .tabItem { Image(systemName: "tray.fill") }
                 .tag(1)
             
             UserProfileView()
-                .tabItem { Image(systemName: "person.crop.circle") }
+                .tabItem { Image(systemName: "person.fill") }
                 .tag(2)
         }
         .tint(Color.primary)

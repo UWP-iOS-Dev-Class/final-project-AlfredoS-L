@@ -10,7 +10,8 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            CardStackView()
+//            CardStackView()
+            UserCardView()
                 .tabItem { Image(systemName: "binoculars.fill") }
                 .tag(0)
             

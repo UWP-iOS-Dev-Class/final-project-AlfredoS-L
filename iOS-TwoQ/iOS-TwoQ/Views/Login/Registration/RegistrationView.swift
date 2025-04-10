@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct RegistrationView: View {
+  
   @Environment(\.dismiss) var dismiss
+  @EnvironmentObject var authVM: AuthViewModel
+  
   @State private var firstName = ""
   @State private var lastName = ""
   @State private var region = ""
   @State private var email = ""
   @State private var password = ""
   @State private var confirmPassword = ""
+  // Flag to trigger navigation on successful sign up.
   @State private var isRegistered = false
   
   var body: some View {
     VStack {
-      // App name
       Text("TwoQ")
         .font(.largeTitle)
         .fontWeight(.bold)
       
       Spacer().frame(height: 8)
       
-      // Registration fields
       VStack(spacing: 16) {
         TextField("First Name", text: $firstName)
           .padding()
@@ -68,7 +70,22 @@ struct RegistrationView: View {
       
       // Sign Up button
       Button(action: {
-        isRegistered = true
+        // Ensure passwords match, then try to sign up.
+        guard password == confirmPassword else {
+          // Error message to be added.
+          return
+        }
+        authVM.signUp(firstName: firstName,
+                      lastName: lastName,
+                      email: email,
+                      password: password,
+                      region: region) { success in
+          if success {
+            isRegistered = true // Trigger navigation to MainView.
+          } else {
+            // Error message to be added.
+          }
+        }
       }) {
         Text("Sign Up")
           .bold()
@@ -81,7 +98,7 @@ struct RegistrationView: View {
       .padding(.horizontal, 80)
       .padding(.top, 20)
       
-      // Sign in link
+      // Already a member? Dismiss to go back to LoginView.
       HStack {
         Text("Already a member?")
           .foregroundColor(.gray)
@@ -95,10 +112,10 @@ struct RegistrationView: View {
       .padding(.bottom, 30)
       .padding(.top, 60)
     }
-    // Push MainView
+    // Navigation destination for successful registration.
     .navigationDestination(isPresented: $isRegistered) {
       MainView()
-      //.navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
     .navigationBarHidden(true)
   }

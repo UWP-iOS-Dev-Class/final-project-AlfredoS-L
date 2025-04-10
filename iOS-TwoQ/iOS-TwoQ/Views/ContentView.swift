@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+  @StateObject var authVM = AuthViewModel()
+  
+  var body: some View {
+    // When authVM.isLoggedIn is true, show MainView.
+    // Otherwise, show LoginView.
+    Group {
+      if authVM.isLoggedIn {
+        MainView()
+          .environmentObject(authVM)
+      } else {
         LoginView()
+          .environmentObject(authVM)
+      }
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }

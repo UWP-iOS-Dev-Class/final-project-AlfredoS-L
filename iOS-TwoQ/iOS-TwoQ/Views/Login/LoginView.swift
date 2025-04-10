@@ -8,29 +8,24 @@
 import SwiftUI
 
 struct LoginView: View {
+  
+  @EnvironmentObject var authVM: AuthViewModel
   @State private var email = ""
   @State private var password = ""
-  @State private var isLoggedIn = false
   @State private var isRegistering = false
   
   var body: some View {
     NavigationStack {
       VStack {
-        // App name
         Text("TwoQ")
           .font(.largeTitle)
           .fontWeight(.bold)
-        
         Spacer().frame(height: 8)
-        
-        // Greeting text
         Text("Welcome Back!")
           .font(.title2)
           .foregroundColor(.gray)
-        
         Spacer().frame(height: 40)
         
-        // Email & password fields
         VStack(spacing: 16) {
           TextField("Email", text: $email)
             .keyboardType(.emailAddress)
@@ -50,9 +45,10 @@ struct LoginView: View {
         
         Spacer().frame(height: 20)
         
-        // Sign in button
         Button(action: {
-          isLoggedIn = true
+          authVM.signIn(email: email, password: password) { success in
+            // authVM.isLoggedIn will be updated inside the signIn function.
+          }
         }) {
           Text("Sign In")
             .bold()
@@ -65,7 +61,6 @@ struct LoginView: View {
         .padding(.horizontal, 80)
         .padding(.top, 20)
         
-        // Sign Up link
         HStack {
           Text("Not a current member?")
             .foregroundColor(.gray)
@@ -79,12 +74,6 @@ struct LoginView: View {
         .padding(.bottom, 30)
         .padding(.top, 60)
       }
-      // Push MainView
-      .navigationDestination(isPresented: $isLoggedIn) {
-        MainView()
-        //.navigationBarBackButtonHidden(true)
-      }
-      // Push RegistrationView
       .navigationDestination(isPresented: $isRegistering) {
         RegistrationView()
       }
@@ -95,4 +84,5 @@ struct LoginView: View {
 
 #Preview {
   LoginView()
+    .environmentObject(AuthViewModel())
 }

@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct UserCardView: View {
+    
+    let user: User = mockUsers[0]
+    
     var body: some View {
-//        ZStack(alignment: .leading){
-        VStack(alignment: .leading) {
+        ZStack(alignment: .leading){
             ScrollView {
+                // start of top view
                 HStack {
                     Image(systemName: "photo")
                         .resizable()
@@ -19,60 +22,65 @@ struct UserCardView: View {
                         .clipped()
                         .frame(width: 90, height: 90)
                         .clipShape(Circle())
+                        .padding(.trailing, 10)
+                    
+                    VStack(alignment: .leading) {
+                        Text(user.firstName)
+                            .font(.system(size: 28, weight: .bold))
+                        Text(user.lastName)
+                            .font(.system(size: 28, weight: .bold))
+                    }
                     
                     Spacer()
-                    
-                    Text("Alfredo Sandoval-Luis")
-                        .font(.system(size: 24, weight: .bold))
                 }
+                // end of top view
                 
+                // start of tag bubble view
                 VStack(alignment: .leading, spacing: 8) {
-                    // TODO: Turn these into a view for reusability, passing in image name and color
                     HStack {
-                        HStack {
-                            Image(systemName: "trophy.fill")
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                            Text("diamond")
-                                .font(.system(size: 14))
-                        }
-                        .padding(.vertical, 3)
-                        .padding(.horizontal, 7)
-                        .background(Color.purple.opacity(0.5))
-                        .cornerRadius(8)
+                        TagBubbleView(
+                            text: "diamond", sfSymbolName: "trophy.fill",
+                            color: Color.purple, width: 15, height: 15
+                        )
                         
-                        HStack {
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                            Text("Jett")
-                                .font(.system(size: 14))
-                        }
-                        .padding(.vertical, 3)
-                        .padding(.horizontal, 7)
-                        .background(Color.blue.opacity(0.5))
-                        .cornerRadius(8)
+                        TagBubbleView(
+                            text: "jett", sfSymbolName: "star.fill",
+                            color: Color.blue, width: 15, height: 15
+                        )
                         
-                        HStack {
-                            Image(systemName: "mappin")
-                                .resizable()
-                                .frame(width: 7, height: 15)
-                            Text("midwest")
-                                .font(.system(size: 14))
-                        }
-                        .padding(.vertical, 3)
-                        .padding(.horizontal, 7)
-                        .background(Color.green.opacity(0.5))
-                        .cornerRadius(8)
+                        TagBubbleView(
+                            text: "midwest", sfSymbolName: "mappin",
+                            color: Color.green, width: 7, height: 15
+                        )
                         
                         Spacer()
                     }
+                    .padding(.bottom, 8)
+                    // end of tag bubble view
+                    
+                    // start of body view
+                    PromptResponseBubbleView(prompt: "I geek out on", response: "12 episode animes that have a cult following")
+                    UserSynopsisView(
+                        texts: [
+                            "This is the first line of the bbble.",
+                            "This is the second line",
+                            "Another line here.",
+                            "Another informative line here.",
+                            "Another informative line here.",
+                            "Another informative line here.",
+                            "Another informative line here."
+                        ], sfSymbolStrings: [
+                            "arrow.up.circlepath",
+                            "trophy.fill"
+                        ]
+                    )
+                    // end of body view
                 }
             }
             .padding()
+            .scrollIndicators(.hidden)
         }
-//        }
-        .frame(width:UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.height/1.45)
+        .frame(width:UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.height/1.25)
         .cornerRadius(16)
         .padding(.horizontal)
         .background(Color.gray.opacity(0.5))

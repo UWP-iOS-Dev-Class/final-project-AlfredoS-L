@@ -24,6 +24,7 @@
 		385980A52DA75ABF000B4E83 /* TagBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980A42DA75ABF000B4E83 /* TagBubbleView.swift */; };
 		385980A72DA75FC6000B4E83 /* PromptResponseBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980A62DA75FC6000B4E83 /* PromptResponseBubbleView.swift */; };
 		385980A92DA76729000B4E83 /* UserSynopsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980A82DA76729000B4E83 /* UserSynopsisView.swift */; };
+		385980C72DB095DF000B4E83 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980C62DB095DF000B4E83 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		385980A42DA75ABF000B4E83 /* TagBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagBubbleView.swift; sourceTree = "<group>"; };
 		385980A62DA75FC6000B4E83 /* PromptResponseBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptResponseBubbleView.swift; sourceTree = "<group>"; };
 		385980A82DA76729000B4E83 /* UserSynopsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSynopsisView.swift; sourceTree = "<group>"; };
+		385980C62DB095DF000B4E83 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			children = (
 				385980A02DA758B5000B4E83 /* Mock */,
 				385980892D9DC477000B4E83 /* User.swift */,
+				385980C62DB095DF000B4E83 /* Models.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385980C72DB095DF000B4E83 /* Models.swift in Sources */,
 				3859809A2D9E001F000B4E83 /* AuthViewModel.swift in Sources */,
 				385980A92DA76729000B4E83 /* UserSynopsisView.swift in Sources */,
 				385980A72DA75FC6000B4E83 /* PromptResponseBubbleView.swift in Sources */,

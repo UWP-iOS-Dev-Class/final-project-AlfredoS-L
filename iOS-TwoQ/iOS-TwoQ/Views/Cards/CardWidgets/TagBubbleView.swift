@@ -9,9 +9,11 @@ import SwiftUI
 
 struct TagBubbleView: View {
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     let text: String
-    let sfSymbolName: String
     let color: Color
+    let sfSymbolName: String
     
     var body: some View {
         HStack {
@@ -25,11 +27,14 @@ struct TagBubbleView: View {
         .font(.system(size: 14))
         .padding(.vertical, 3)
         .padding(.horizontal, 7)
-        .background(color.opacity(0.5))
+        .background(
+          color
+            .opacity(colorScheme == .light ? 0.85 : 0.6)
+        )
         .cornerRadius(8)
     }
 }
 
 #Preview {
-    TagBubbleView(text: "diamond", sfSymbolName: "trophy.fill", color: Color.purple)
+    TagBubbleView(text: "diamond", color: Color("diamond"), sfSymbolName: "trophy.fill")
 }

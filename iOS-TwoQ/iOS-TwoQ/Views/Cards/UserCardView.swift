@@ -39,21 +39,13 @@ struct UserCardView: View {
                 
                 // start of tag bubble view
                 HStack {
-                    TagBubbleView(
-                        text: "diamond", sfSymbolName: "trophy.fill",
-                        color: Color.purple
-                    )
-                    
-                    TagBubbleView(
-                        text: "jett", sfSymbolName: "star.fill",
-                        color: Color.blue
-                    )
-                    
-                    TagBubbleView(
-                        text: "midwest", sfSymbolName: "mappin",
-                        color: Color.green
-                    )
-                    
+                    ForEach(user.tags, id: \.self) { tag in
+                        TagBubbleView(
+                            text: tag.text,
+                            color: Color(tag.color),
+                            sfSymbolName: tag.sfSymbolName
+                        )
+                    }
                     Spacer()
                 }
                 .padding(.bottom, 10)

@@ -13,5 +13,15 @@
 import Foundation
 
 let mockUsers: [User] = [
-    User(id: "1", firstName: "Alfredo", lastName: "Sandoval-Luis", email: "alfredosandoval@gmail.com")
+    User(
+        id: "1",
+        firstName: "Alfredo",
+        lastName: "Sandoval-Luis",
+        email: "alfredosandoval@gmail.com",
+        tags: [
+            Tag(text: "Diamond", color: "diamond", sfSymbolName: "trophy.fill"),
+            Tag(text: "Jett", color: "platinum", sfSymbolName: "star.fill"),
+            Tag(text: "Midwest", color: "ascendant", sfSymbolName: "mappin")
+        ]
+    )
 ]

@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
-  var body: some View {
-    TabView {
-      CardStackView()
-        .tabItem { Image(systemName: "binoculars.fill") }
-        .tag(0)
-      
-      MatchesView()
-        .tabItem { Image(systemName: "tray.fill") }
-        .tag(1)
-      
-      UserProfileView()
-        .tabItem { Image(systemName: "person.fill") }
-        .tag(2)
+    var body: some View {
+        TabView {
+//            CardStackView()
+            UserCardView()
+                .tabItem { Image(systemName: "binoculars.fill") }
+                .tag(0)
+            
+            MatchesView()
+                .tabItem { Image(systemName: "tray.fill") }
+                .tag(1)
+            
+            UserProfileView()
+                .tabItem { Image(systemName: "person.fill") }
+                .tag(2)
+        }
+        .tint(Color.primary)
     }
     .tint(Color.primary)
   }

@@ -19,6 +19,12 @@
 		385980962D9E0001000B4E83 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980952D9E0001000B4E83 /* LoginView.swift */; };
 		385980982D9E0014000B4E83 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980972D9E0014000B4E83 /* RegistrationView.swift */; };
 		3859809A2D9E001F000B4E83 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980992D9E001F000B4E83 /* AuthViewModel.swift */; };
+		3859809C2D9E3C88000B4E83 /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3859809B2D9E3C88000B4E83 /* UserCardView.swift */; };
+		385980A22DA758C3000B4E83 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980A12DA758C3000B4E83 /* MockUser.swift */; };
+		385980A52DA75ABF000B4E83 /* TagBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980A42DA75ABF000B4E83 /* TagBubbleView.swift */; };
+		385980A72DA75FC6000B4E83 /* PromptResponseBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980A62DA75FC6000B4E83 /* PromptResponseBubbleView.swift */; };
+		385980A92DA76729000B4E83 /* UserSynopsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980A82DA76729000B4E83 /* UserSynopsisView.swift */; };
+		385980C72DB095DF000B4E83 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980C62DB095DF000B4E83 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +41,12 @@
 		385980952D9E0001000B4E83 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		385980972D9E0014000B4E83 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		385980992D9E001F000B4E83 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		3859809B2D9E3C88000B4E83 /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
+		385980A12DA758C3000B4E83 /* MockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
+		385980A42DA75ABF000B4E83 /* TagBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagBubbleView.swift; sourceTree = "<group>"; };
+		385980A62DA75FC6000B4E83 /* PromptResponseBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptResponseBubbleView.swift; sourceTree = "<group>"; };
+		385980A82DA76729000B4E83 /* UserSynopsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSynopsisView.swift; sourceTree = "<group>"; };
+		385980C62DB095DF000B4E83 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +108,9 @@
 		385980832D9DC3EE000B4E83 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				385980A02DA758B5000B4E83 /* Mock */,
 				385980892D9DC477000B4E83 /* User.swift */,
+				385980C62DB095DF000B4E83 /* Models.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -142,7 +156,9 @@
 		385980882D9DC447000B4E83 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				385980A32DA75A95000B4E83 /* CardWidgets */,
 				3859808E2D9DC5DA000B4E83 /* CardStackView.swift */,
+				3859809B2D9E3C88000B4E83 /* UserCardView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -161,6 +177,24 @@
 				385980972D9E0014000B4E83 /* RegistrationView.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		385980A02DA758B5000B4E83 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				385980A12DA758C3000B4E83 /* MockUser.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		385980A32DA75A95000B4E83 /* CardWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				385980A42DA75ABF000B4E83 /* TagBubbleView.swift */,
+				385980A62DA75FC6000B4E83 /* PromptResponseBubbleView.swift */,
+				385980A82DA76729000B4E83 /* UserSynopsisView.swift */,
+			);
+			path = CardWidgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +270,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385980C72DB095DF000B4E83 /* Models.swift in Sources */,
 				3859809A2D9E001F000B4E83 /* AuthViewModel.swift in Sources */,
+				385980A92DA76729000B4E83 /* UserSynopsisView.swift in Sources */,
+				385980A72DA75FC6000B4E83 /* PromptResponseBubbleView.swift in Sources */,
+				385980A52DA75ABF000B4E83 /* TagBubbleView.swift in Sources */,
 				3859808F2D9DC5DA000B4E83 /* CardStackView.swift in Sources */,
 				385980932D9DC61A000B4E83 /* MatchesView.swift in Sources */,
 				3859807E2D9DC345000B4E83 /* ContentView.swift in Sources */,
@@ -244,7 +282,9 @@
 				3859808C2D9DC50F000B4E83 /* MainView.swift in Sources */,
 				3859807F2D9DC345000B4E83 /* iOS_TwoQApp.swift in Sources */,
 				3859808A2D9DC477000B4E83 /* User.swift in Sources */,
+				3859809C2D9E3C88000B4E83 /* UserCardView.swift in Sources */,
 				385980962D9E0001000B4E83 /* LoginView.swift in Sources */,
+				385980A22DA758C3000B4E83 /* MockUser.swift in Sources */,
 				385980912D9DC5F9000B4E83 /* UserProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,12 +4,13 @@
 //
 //  Created by Alfredo Sandoval-Luis on 4/2/25.
 //
+//  
 
 import SwiftUI
 
 struct CardStackView: View {
     var body: some View {
-        Text("Main Page of app, where users will swipe")
+        Text("Multiple cards stacked on top of eachother")
     }
 }
 

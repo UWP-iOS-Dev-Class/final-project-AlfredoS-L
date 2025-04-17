@@ -12,17 +12,17 @@ struct TagBubbleView: View {
     let text: String
     let sfSymbolName: String
     let color: Color
-    let width: CGFloat
-    let height: CGFloat
     
     var body: some View {
         HStack {
             Image(systemName: sfSymbolName)
-                .resizable()
-                .frame(width: width, height: height)
+            
             Text(text)
-                .font(.system(size: 14))
+                .padding(.trailing, 3)
         }
+//        .foregroundStyle(Color("textColor"))
+        .foregroundStyle(Color.white)
+        .font(.system(size: 14))
         .padding(.vertical, 3)
         .padding(.horizontal, 7)
         .background(color.opacity(0.5))
@@ -31,5 +31,5 @@ struct TagBubbleView: View {
 }
 
 #Preview {
-    TagBubbleView(text: "diamond", sfSymbolName: "trophy.fill", color: Color.purple, width: 15, height: 15)
+    TagBubbleView(text: "diamond", sfSymbolName: "trophy.fill", color: Color.purple)
 }

@@ -16,19 +16,20 @@ struct PromptResponseBubbleView: View {
             Text(prompt)
                 .font(.system(size: 15, weight: .light))
                 .padding(.bottom, 5)
+                .foregroundStyle(Color("textColor"))
             Text(response)
                 .font(.system(size: 20, weight: .medium))
+                .foregroundStyle(Color("textColor"))
         }
-        .padding(15) // Space between the text and the bubble's edge
+        .padding(15)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.secondary.opacity(0.9)) // Background color with opacity
-                .shadow(radius: 2) // Optional: adds a subtle shadow
+                .fill(Color("bubblesColor"))
+                .shadow(radius: 1, y: 4).opacity(0.45)
         )
-        .foregroundColor(.black) // Text color
         .multilineTextAlignment(.leading)
-        .fixedSize(horizontal: false, vertical: true) // Allow the bubble to grow vertically
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 

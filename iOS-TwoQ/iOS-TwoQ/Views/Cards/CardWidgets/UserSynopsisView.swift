@@ -13,30 +13,34 @@ struct UserSynopsisView: View {
 
         var body: some View {
             VStack(alignment: .leading, spacing: 8) {
-                // Loop through texts with an index so we can add dividers between items
+                // loop through texts with an index so we can add dividers between items
                 ForEach(Array(texts.enumerated()), id: \.offset) { index, text in
-                    Text(text)
-                        .font(.system(size: 15, weight: .light))
-                        .multilineTextAlignment(.leading)
+                    HStack {
+                        Image(systemName: sfSymbolStrings[index])
+                            .font(.system(size: 15))
+                        Text(text)
+                            .font(.system(size: 15, weight: .light))
+                            .multilineTextAlignment(.leading)
+                    }
+                    .foregroundStyle(Color("textColor"))
                     
-                    // Add a divider after every text except the last one
+                    // a divider after every text except the last one
                     if index != texts.count - 1 {
                         Divider()
-                            .frame(height: 1) // Explicit height to ensure rendering
-                            .background(Color.black.opacity(0.3))  // Explicit color if needed
+                            .frame(height: 1) // explicit height to ensure rendering
+                            .background(Color("textColor"))  // explicit color if needed
                             .padding(.horizontal, 8)
                     }
                 }
             }
-            .padding(12) // Internal padding around the content
-            .frame(maxWidth: .infinity, alignment: .leading) // Fill the available horizontal space
+            .padding(15)
+//            .frame(maxWidth: .infinity, alignment: .leading)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.secondary.opacity(0.9))
-                    .shadow(radius: 2)
+                    .fill(Color("bubblesColor"))
+                    .shadow(radius: 1, y: 4).opacity(0.45)
             )
-            .foregroundColor(.black) // Set text color
-            .fixedSize(horizontal: false, vertical: true) // Allow vertical expansion
+            .fixedSize(horizontal: false, vertical: true)
         }
 }
 
@@ -45,14 +49,10 @@ struct UserSynopsisView: View {
         texts: [
             "This is the first line of the bbble.",
             "This is the second line",
-            "Another informative line here.",
-            "Yet one more line to illustrate the flexibility.",
-            "Another informative line here.",
-            "Another informative line here.",
-            "Another informative line here.",
             "Another informative line here."
         ], sfSymbolStrings: [
-            "arrow.up.circlepath",
+            "mappin",
+            "trophy.fill",
             "trophy.fill"
         ]
     )

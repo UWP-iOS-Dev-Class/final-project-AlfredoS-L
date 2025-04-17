@@ -20,9 +20,9 @@ let mockUsers: [User] = [
         email: "alfredosandoval@gmail.com",
         region: "north america",
         tags: [
-            Tag(text: "Diamond", color: "diamond", sfSymbolName: "trophy.fill"),
-            Tag(text: "Jett", color: "platinum", sfSymbolName: "star.fill"),
-            Tag(text: "Midwest", color: "ascendant", sfSymbolName: "mappin")
+            Tag(text: "Diamond", color: "Diamond", sfSymbolName: "trophy.fill"),
+            Tag(text: "Jett", color: "Platinum", sfSymbolName: "star.fill"),
+            Tag(text: "Midwest", color: "Ascendant", sfSymbolName: "mappin")
         ]
     )
 ]

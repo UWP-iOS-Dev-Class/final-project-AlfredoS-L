@@ -5,6 +5,9 @@
 ## User settings
 xcuserdata/
 
+## Sensitive Files
+GoogleService-Info.plist
+
 ## File settings
 .DS_Store
 

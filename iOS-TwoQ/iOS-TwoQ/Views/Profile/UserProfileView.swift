@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    var body: some View {
-        Text("Where Users see their profile and settings")
+  @EnvironmentObject var authVM: AuthViewModel
+  
+  var body: some View {
+    VStack {
+      Text("Where Users see their profile and settings")
+      
+      Button("Sign Out") {
+        authVM.signOut()
+      }
+      .bold()
+      .foregroundColor(.white)
+      .padding()
+      .frame(maxWidth: .infinity)
+      .background(Color.orange)
+      .cornerRadius(8)
+      .padding(.horizontal, 80)
+      .padding(.top, 20)
     }
+  }
 }
 
 #Preview {
-    UserProfileView()
+  UserProfileView()
+    .environmentObject(AuthViewModel())
 }

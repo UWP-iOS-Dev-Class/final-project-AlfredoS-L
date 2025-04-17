@@ -25,8 +25,11 @@ struct MainView: View {
         }
         .tint(Color.primary)
     }
+    .tint(Color.primary)
+  }
 }
 
 #Preview {
-    MainView()
+  MainView()
+    .environmentObject(AuthViewModel())
 }

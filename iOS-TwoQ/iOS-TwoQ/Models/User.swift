@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct User: Identifiable, Codable, Hashable {
+struct User: Identifiable, Codable, Hashable {  
     // essential user information
     let id: String
     var firstName: String
     var lastName: String
     var email: String
+    var region: String
     // supplementary user information
     var tags: [Tag] = []
     // game specific user information

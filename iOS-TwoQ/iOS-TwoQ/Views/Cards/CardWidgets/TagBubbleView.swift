@@ -22,19 +22,18 @@ struct TagBubbleView: View {
             Text(text)
                 .padding(.trailing, 3)
         }
-//        .foregroundStyle(Color("textColor"))
-        .foregroundStyle(Color.white)
+        .foregroundStyle(Color("textColor"))
         .font(.system(size: 14))
         .padding(.vertical, 3)
         .padding(.horizontal, 7)
         .background(
-          color
-            .opacity(colorScheme == .light ? 0.85 : 0.6)
+            color
+                .opacity(colorScheme == .light ? 0.85 : 0.6)
         )
         .cornerRadius(8)
     }
 }
 
 #Preview {
-    TagBubbleView(text: "diamond", color: Color("diamond"), sfSymbolName: "trophy.fill")
+    TagBubbleView(text: "diamond", color: Color("Diamond"), sfSymbolName: "trophy.fill")
 }

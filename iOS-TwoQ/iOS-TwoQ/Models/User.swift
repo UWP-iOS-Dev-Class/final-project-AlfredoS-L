@@ -16,5 +16,16 @@ struct User: Identifiable, Codable, Hashable {
     var region: String
     // supplementary user information
     var tags: [Tag] = []
+    
+    var dictionary: [String:Any] {
+        return [
+            "firstName": firstName,
+            "lastName":  lastName,
+            "email":     email,
+            "region":    region,
+            // ↳ Store tags as an array of dictionaries:
+            "tags":      tags.map { $0.dictionary }
+        ]
+    }
     // game specific user information
 }

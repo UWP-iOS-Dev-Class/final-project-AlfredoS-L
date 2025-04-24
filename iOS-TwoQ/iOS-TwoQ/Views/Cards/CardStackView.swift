@@ -9,8 +9,24 @@
 import SwiftUI
 
 struct CardStackView: View {
+    @StateObject var cardsViewModel = CardsViewModel(service: CardService())
+    
+    @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
-        Text("Multiple cards stacked on top of eachother")
+        NavigationStack {
+            ZStack {
+                VStack {
+                    ZStack {
+                        ForEach(cardsViewModel.cardModels) { card in
+                            Text("Something should be here")
+                        }
+                    }
+                    if cardsViewModel.cardModels.isEmpty {
+                        UserCardView()
+                    }
+                }
+            }
+        }
     }
 }
 

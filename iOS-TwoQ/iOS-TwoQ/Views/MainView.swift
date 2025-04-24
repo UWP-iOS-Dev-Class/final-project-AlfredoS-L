@@ -8,22 +8,27 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor(named: "TabColor")
+    }
+    
     var body: some View {
         TabView {
-//            CardStackView()
-            UserCardView()
-                .tabItem { Image(systemName: "binoculars.fill") }
+            CardStackView()
+//            UserCardView()
                 .tag(0)
+                .tabItem { Image(systemName: "binoculars.fill") }
             
             MatchesView()
-                .tabItem { Image(systemName: "tray.fill") }
                 .tag(1)
+                .tabItem { Image(systemName: "tray.fill") }
             
             UserProfileView()
-                .tabItem { Image(systemName: "person.fill") }
                 .tag(2)
+                .tabItem { Image(systemName: "person.fill") }
         }
-        .tint(Color.primary)
+        .tint(Color("TabItemColor"))
     }
 }
 

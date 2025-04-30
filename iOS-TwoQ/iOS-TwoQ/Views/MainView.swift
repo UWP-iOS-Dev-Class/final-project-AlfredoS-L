@@ -16,7 +16,6 @@ struct MainView: View {
     var body: some View {
         TabView {
             CardStackView()
-//            UserCardView()
                 .tag(0)
                 .tabItem { Image(systemName: "binoculars.fill") }
             

@@ -9,10 +9,16 @@ import SwiftUI
 
 struct UserCardView: View {
     
-    let user: User = mockUsers[0]
+    @ObservedObject var cardsViewModel: CardsViewModel
+    
+//    let user: User = mockUsers[0]
+    var userCard: CardModel
+    let cardModel: CardModel
     
     
     var body: some View {
+        let user = userCard.user
+        
         ZStack(alignment: .leading){
             ScrollView {
                 // start of top view
@@ -36,8 +42,8 @@ struct UserCardView: View {
                 // start of body view
                 VStack(alignment: .leading, spacing: 12) {
                     PromptResponseBubbleView(
-                        prompt: "I geek out on",
-                        response: "12 episode animes that have a cult following"
+                        prompt: "THIS IS HARD CODED",
+                        response: "will work on this next sprint, name and tags are being pulled from the database though 😁"
                     )
                     
                     UserSynopsisView(
@@ -67,6 +73,9 @@ struct UserCardView: View {
             .scrollIndicators(.hidden)
         }
         .background(Color("backgroundColor"))
+        .onReceive(cardsViewModel.$ButtonSwipeAction, perform: { action in
+            onReceiveSwipeAction(action)
+        })
     }
 }
 
@@ -98,6 +107,29 @@ struct NamePictureView: View {
     }
 }
 
-#Preview {
-    UserCardView()
+private extension UserCardView {
+    func swipeRight() {
+        cardsViewModel.removeCard(cardModel)
+    }
+
+    func swipeLeft() {
+        cardsViewModel.removeCard(cardModel)
+    }
+
+    func onReceiveSwipeAction(_ action: SwipeAction?) {
+        guard let action else { return }
+        let topCard = cardsViewModel.cardModels.last
+
+        if topCard == cardModel {
+            switch action {
+            case .reject:
+                swipeLeft()
+            case .like:
+                swipeRight()
+            }}
+    }
 }
+
+//#Preview {
+//    UserCardView()
+//}

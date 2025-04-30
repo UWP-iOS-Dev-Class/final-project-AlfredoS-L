@@ -27,6 +27,9 @@
 		385980C72DB095DF000B4E83 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385980C62DB095DF000B4E83 /* Models.swift */; };
 		387002762DB892B700CFE492 /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387002752DB892B700CFE492 /* CardsViewModel.swift */; };
 		387002792DB8945B00CFE492 /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387002782DB8945B00CFE492 /* CardService.swift */; };
+		3870027D2DC27CFE00CFE492 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870027C2DC27CFE00CFE492 /* SkeletonView.swift */; };
+		3870027F2DC2830C00CFE492 /* CardLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870027E2DC2830C00CFE492 /* CardLoadingView.swift */; };
+		387002812DC2925A00CFE492 /* MatchButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387002802DC2925A00CFE492 /* MatchButtonsView.swift */; };
 		6708CB6E2DA74987005F087B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6708CB6D2DA74987005F087B /* GoogleService-Info.plist */; };
 		6748A31F2DA74EC700AF1132 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6748A31E2DA74EC700AF1132 /* FirebaseAnalytics */; };
 		6748A3212DA74EC700AF1132 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 6748A3202DA74EC700AF1132 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -76,6 +79,9 @@
 		385980C62DB095DF000B4E83 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		387002752DB892B700CFE492 /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		387002782DB8945B00CFE492 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
+		3870027C2DC27CFE00CFE492 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
+		3870027E2DC2830C00CFE492 /* CardLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLoadingView.swift; sourceTree = "<group>"; };
+		387002802DC2925A00CFE492 /* MatchButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchButtonsView.swift; sourceTree = "<group>"; };
 		6708CB6D2DA74987005F087B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +152,7 @@
 				385980832D9DC3EE000B4E83 /* Models */,
 				385980852D9DC3FC000B4E83 /* ViewModels */,
 				385980842D9DC3F5000B4E83 /* Views */,
+				3870027A2DC27CDA00CFE492 /* Widgets */,
 				3859807A2D9DC345000B4E83 /* Assets.xcassets */,
 				6708CB6D2DA74987005F087B /* GoogleService-Info.plist */,
 				385980792D9DC345000B4E83 /* Preview Content */,
@@ -216,6 +223,7 @@
 				385980A32DA75A95000B4E83 /* CardWidgets */,
 				3859808E2D9DC5DA000B4E83 /* CardStackView.swift */,
 				3859809B2D9E3C88000B4E83 /* UserCardView.swift */,
+				3870027E2DC2830C00CFE492 /* CardLoadingView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -260,6 +268,15 @@
 				387002782DB8945B00CFE492 /* CardService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		3870027A2DC27CDA00CFE492 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				3870027C2DC27CFE00CFE492 /* SkeletonView.swift */,
+				387002802DC2925A00CFE492 /* MatchButtonsView.swift */,
+			);
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,11 +393,14 @@
 				385980982D9E0014000B4E83 /* RegistrationView.swift in Sources */,
 				3859808C2D9DC50F000B4E83 /* MainView.swift in Sources */,
 				3859807F2D9DC345000B4E83 /* iOS_TwoQApp.swift in Sources */,
+				3870027D2DC27CFE00CFE492 /* SkeletonView.swift in Sources */,
+				387002812DC2925A00CFE492 /* MatchButtonsView.swift in Sources */,
 				3859808A2D9DC477000B4E83 /* User.swift in Sources */,
 				3859809C2D9E3C88000B4E83 /* UserCardView.swift in Sources */,
 				385980962D9E0001000B4E83 /* LoginView.swift in Sources */,
 				385980A22DA758C3000B4E83 /* MockUser.swift in Sources */,
 				385980912D9DC5F9000B4E83 /* UserProfileView.swift in Sources */,
+				3870027F2DC2830C00CFE492 /* CardLoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

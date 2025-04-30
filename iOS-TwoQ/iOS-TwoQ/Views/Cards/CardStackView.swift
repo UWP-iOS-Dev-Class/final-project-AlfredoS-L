@@ -16,13 +16,17 @@ struct CardStackView: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    ZStack {
+                    ZStack(alignment: .bottom) {
                         ForEach(cardsViewModel.cardModels) { card in
-                            Text("Something should be here")
+                            UserCardView(cardsViewModel: cardsViewModel, userCard: card, cardModel: card)
+                        }
+                        if !cardsViewModel.cardModels.isEmpty {
+                            MatchButtonsView(cardsViewModel: cardsViewModel)
+                                .padding(.bottom, 20)
                         }
                     }
                     if cardsViewModel.cardModels.isEmpty {
-                        UserCardView()
+                        CardLoadingView()
                     }
                 }
             }

@@ -9,37 +9,25 @@ import SwiftUI
 
 struct UserCardView: View {
     
-    let user: User = mockUsers[0]
+    @ObservedObject var cardsViewModel: CardsViewModel
+    
+//    let user: User = mockUsers[0]
+    var userCard: CardModel
+    let cardModel: CardModel
+    
     
     var body: some View {
+        let user = userCard.user
+        
         ZStack(alignment: .leading){
             ScrollView {
                 // start of top view
-                HStack {
-                    Image(systemName: "photo") // TODO: Add user pictures
-                        .resizable()
-                        .scaledToFill()
-                        .clipped()
-                        .frame(width: 90, height: 90)
-                        .clipShape(Circle())
-                        .padding(.trailing, 10)
-                    
-                    VStack(alignment: .leading) {
-                        Text(user.firstName)
-                            .font(.system(size: 28, weight: .bold))
-                        Text(user.lastName)
-                            .font(.system(size: 28, weight: .bold))
-                    }
-                    
-                    Spacer()
-                }
-                .foregroundStyle(Color("textColor"))
-                .padding(.bottom, 15)
+                NamePictureView(user: user)
                 // end of top view
                 
                 // start of tag bubble view
                 HStack {
-                    ForEach(user.tags, id: \.self) { tag in
+                    ForEach(user.tags) { tag in
                         TagBubbleView(
                             text: tag.text,
                             color: Color(tag.color),
@@ -54,8 +42,8 @@ struct UserCardView: View {
                 // start of body view
                 VStack(alignment: .leading, spacing: 12) {
                     PromptResponseBubbleView(
-                        prompt: "I geek out on",
-                        response: "12 episode animes that have a cult following"
+                        prompt: "THIS IS HARD CODED",
+                        response: "will work on this next sprint, name and tags are being pulled from the database though 😁"
                     )
                     
                     UserSynopsisView(
@@ -84,15 +72,64 @@ struct UserCardView: View {
             .padding()
             .scrollIndicators(.hidden)
         }
-        .frame(width:UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/1.25)
-        .cornerRadius(16)
-        .padding(.horizontal)
         .background(Color("backgroundColor"))
-        .cornerRadius(16)
-//        .shadow(radius: 10)
+        .onReceive(cardsViewModel.$ButtonSwipeAction, perform: { action in
+            onReceiveSwipeAction(action)
+        })
     }
 }
 
-#Preview {
-    UserCardView()
+struct NamePictureView: View {
+    
+    let user: User
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "photo") // TODO: Add user pictures
+                .resizable()
+                .scaledToFill()
+                .clipped()
+                .frame(width: 90, height: 90)
+                .clipShape(Circle())
+                .padding(.trailing, 10)
+            
+            VStack(alignment: .leading) {
+                Text(user.firstName)
+                    .font(.system(size: 28, weight: .bold))
+                Text(user.lastName)
+                    .font(.system(size: 28, weight: .bold))
+            }
+            
+            Spacer()
+        }
+        .foregroundStyle(Color("textColor"))
+        .padding(.bottom, 15)
+    }
 }
+
+private extension UserCardView {
+    func swipeRight() {
+        cardsViewModel.removeCard(cardModel)
+    }
+
+    func swipeLeft() {
+        cardsViewModel.removeCard(cardModel)
+    }
+
+    func onReceiveSwipeAction(_ action: SwipeAction?) {
+        guard let action else { return }
+        let topCard = cardsViewModel.cardModels.last
+
+        if topCard == cardModel {
+            switch action {
+            case .reject:
+                swipeLeft()
+            case .like:
+                swipeRight()
+            }}
+    }
+}
+
+//#Preview {
+//    UserCardView()
+//}

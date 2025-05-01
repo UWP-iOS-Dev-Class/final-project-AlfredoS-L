@@ -20,10 +20,16 @@ struct MainView: View {
                 .tabItem { Image(systemName: "binoculars.fill") }
             
             MatchesView()
+                .tabItem {
+                    Image(systemName: "tray.fill")
+                }
                 .tag(1)
                 .tabItem { Image(systemName: "tray.fill") }
             
             UserProfileView()
+                .tabItem {
+                    Image(systemName: "person.fill")
+                }
                 .tag(2)
                 .tabItem { Image(systemName: "person.fill") }
         }
@@ -32,6 +38,6 @@ struct MainView: View {
 }
 
 #Preview {
-  MainView()
-    .environmentObject(AuthViewModel())
+    MainView()
+        .environmentObject(AuthViewModel())
 }

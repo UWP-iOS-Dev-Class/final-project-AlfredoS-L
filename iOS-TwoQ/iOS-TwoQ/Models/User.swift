@@ -14,6 +14,7 @@ struct User: Identifiable, Codable, Hashable {
     var lastName: String
     var email: String
     var region: String
+    var photoURL: String
     // supplementary user information
     var tags: [Tag] = []
     

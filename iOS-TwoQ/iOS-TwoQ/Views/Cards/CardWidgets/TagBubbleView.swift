@@ -22,7 +22,7 @@ struct TagBubbleView: View {
             Text(text)
                 .padding(.trailing, 3)
         }
-        .foregroundStyle(Color("textColor"))
+        .foregroundStyle(Color("bubblesText"))
         .font(.system(size: 14))
         .padding(.vertical, 3)
         .padding(.horizontal, 7)

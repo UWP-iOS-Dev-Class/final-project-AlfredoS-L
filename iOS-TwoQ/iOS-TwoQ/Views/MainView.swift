@@ -17,7 +17,9 @@ struct MainView: View {
         TabView {
             CardStackView()
                 .tag(0)
-                .tabItem { Image(systemName: "binoculars.fill") }
+                .tabItem {
+                    Image(systemName: "binoculars.fill")
+                }
             
             MatchesView()
                 .tabItem {

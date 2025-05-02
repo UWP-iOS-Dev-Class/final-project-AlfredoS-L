@@ -35,5 +35,5 @@ struct TagBubbleView: View {
 }
 
 #Preview {
-    TagBubbleView(text: "diamond", color: Color("Diamond"), sfSymbolName: "trophy.fill")
+    TagBubbleView(text: "diamond", color: Color("diamond"), sfSymbolName: "trophy.fill")
 }

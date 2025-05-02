@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     init() {
-        UITabBar.appearance().backgroundColor = UIColor(named: "TabColor")
+        UITabBar.appearance().backgroundColor = UIColor(named: "tabColor")
     }
     
     var body: some View {
@@ -35,7 +35,7 @@ struct MainView: View {
                 .tag(2)
                 .tabItem { Image(systemName: "person.fill") }
         }
-        .tint(Color("TabItemColor"))
+        .tint(Color("tabItemColor"))
     }
 }
 

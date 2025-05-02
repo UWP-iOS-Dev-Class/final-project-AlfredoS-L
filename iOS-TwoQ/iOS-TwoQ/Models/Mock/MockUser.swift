@@ -21,7 +21,7 @@ let mockUsers: [User] = [
         region: "north america",
         photoURL: "",
         tags: [
-            Tag(text: "Diamond", color: "Diamond", sfSymbolName: "trophy.fill"),
+            Tag(text: "Diamond", color: "diamond", sfSymbolName: "trophy.fill"),
             Tag(text: "Jett", color: "Platinum", sfSymbolName: "star.fill"),
             Tag(text: "Midwest", color: "Ascendant", sfSymbolName: "mappin")
         ]

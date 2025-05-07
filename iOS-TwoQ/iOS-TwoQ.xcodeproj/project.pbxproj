@@ -55,10 +55,9 @@
 		6748A3492DA74EC700AF1132 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6748A3482DA74EC700AF1132 /* FirebaseStorage */; };
 		6748A34B2DA74EC700AF1132 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 6748A34A2DA74EC700AF1132 /* FirebaseStorageCombine-Community */; };
 		6748A34D2DA74EC700AF1132 /* FirebaseVertexAI in Frameworks */ = {isa = PBXBuildFile; productRef = 6748A34C2DA74EC700AF1132 /* FirebaseVertexAI */; };
-
 		67BD4FD12DBD898A005E5D36 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD4FD02DBD898A005E5D36 /* EditProfileView.swift */; };
 		67BD4FD32DBD89CC005E5D36 /* MatchPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD4FD22DBD89CC005E5D36 /* MatchPreferencesView.swift */; };
-
+		67FB4F5E2DC6E6D8004D392E /* CompleteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FB4F5D2DC6E6D8004D392E /* CompleteProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,17 +80,15 @@
 		385980A62DA75FC6000B4E83 /* PromptResponseBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptResponseBubbleView.swift; sourceTree = "<group>"; };
 		385980A82DA76729000B4E83 /* UserSynopsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSynopsisView.swift; sourceTree = "<group>"; };
 		385980C62DB095DF000B4E83 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-
-		6708CB6D2DA74987005F087B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		67BD4FD02DBD898A005E5D36 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		67BD4FD22DBD89CC005E5D36 /* MatchPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchPreferencesView.swift; sourceTree = "<group>"; };
 		387002752DB892B700CFE492 /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		387002782DB8945B00CFE492 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		3870027C2DC27CFE00CFE492 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		3870027E2DC2830C00CFE492 /* CardLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLoadingView.swift; sourceTree = "<group>"; };
 		387002802DC2925A00CFE492 /* MatchButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchButtonsView.swift; sourceTree = "<group>"; };
 		6708CB6D2DA74987005F087B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-
+		67BD4FD02DBD898A005E5D36 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		67BD4FD22DBD89CC005E5D36 /* MatchPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchPreferencesView.swift; sourceTree = "<group>"; };
+		67FB4F5D2DC6E6D8004D392E /* CompleteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				385980972D9E0014000B4E83 /* RegistrationView.swift */,
+				67FB4F5D2DC6E6D8004D392E /* CompleteProfileView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -392,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67BD4FD12DBD898A005E5D36 /* EditProfileView.swift in Sources */,
+				67FB4F5E2DC6E6D8004D392E /* CompleteProfileView.swift in Sources */,
 				385980C72DB095DF000B4E83 /* Models.swift in Sources */,
 				387002762DB892B700CFE492 /* CardsViewModel.swift in Sources */,
 				3859809A2D9E001F000B4E83 /* AuthViewModel.swift in Sources */,

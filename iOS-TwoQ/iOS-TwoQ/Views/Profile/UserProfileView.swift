@@ -28,7 +28,7 @@ struct RemoteImage: View {
         .frame(width: 80, height: 80)
         .clipShape(Circle())
         .onAppear { loadImage() }
-        .onChange(of: url) { _ in loadImage() }
+        .onChange(of: url) { loadImage() }
     }
 
     private func loadImage() {

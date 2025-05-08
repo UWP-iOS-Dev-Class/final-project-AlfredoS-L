@@ -45,7 +45,7 @@ struct EditProfileView: View {
             .frame(width: 100, height: 100)
             .clipShape(Circle())
         } else {
-          AsyncImage(url: firestorePhotoURL) { phase in
+          AsyncImage(url: authVM.user?.photoURL) { phase in
             switch phase {
             case .success(let image):
               image.resizable().scaledToFill()
@@ -83,7 +83,7 @@ struct EditProfileView: View {
                 .foregroundColor(.green)
             } else {
               Text("Save Changes")
-                .foregroundColor(hasChanges ? .green : .primary)
+                .foregroundColor(hasChanges ? .blue : .primary)
             }
           }
           .disabled(!hasChanges || isSaveButtonDisabled)

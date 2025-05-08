@@ -17,8 +17,8 @@ struct CardStackView: View {
             ZStack {
                 VStack {
                     ZStack(alignment: .bottom) {
-                        ForEach(cardsViewModel.cardModels) { card in
-                            UserCardView(cardsViewModel: cardsViewModel, userCard: card, cardModel: card)
+                        ForEach(cardsViewModel.cardModels) { cardModel in
+                            UserCardView(cardsViewModel: cardsViewModel, cardModel: cardModel)
                         }
                         if !cardsViewModel.cardModels.isEmpty {
                             MatchButtonsView(cardsViewModel: cardsViewModel)

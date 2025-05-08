@@ -69,10 +69,8 @@ struct EditProfileView: View {
                                 .resizable()
                                 .scaledToFill()
                         default:
-                            Image(systemName: "person.crop.circle.fill")
-                                .resizable()
-                                .scaledToFill()
-                                .foregroundColor(.orange.opacity(0.4))
+                            SkeletonView(.circle)
+                                .frame(width: 100, height: 100)
                         }
                     }
                     .frame(width: 100, height: 100)
@@ -95,6 +93,7 @@ struct EditProfileView: View {
                     TextField("Last Name", text: $lastName)
                     TextField("Region", text: $region)
                 }
+                .foregroundStyle(Color("textColor"))
                 
                 Section {
                     Button(action: {
@@ -104,10 +103,10 @@ struct EditProfileView: View {
                             ProgressView("Saving...")
                         } else if showSuccess {
                             Label("Saved!", systemImage: "checkmark.circle.fill")
-                                .foregroundColor(.green)
+                                .foregroundStyle(Color.blue)
                         } else {
                             Text("Save Changes")
-                                .foregroundColor(hasChanges ? .green : .primary)
+                                .foregroundStyle(hasChanges ? Color.blue : Color("textColor"))
                         }
                     }
                     .disabled(!hasChanges || isSaveButtonDisabled)
@@ -115,7 +114,7 @@ struct EditProfileView: View {
                 }
             }
         }
-        .navigationTitle("Edit Profile")
+        .background((Color("backgroundColor")))
         .onAppear(perform: loadUserData)
         
         // Alert after updating profile

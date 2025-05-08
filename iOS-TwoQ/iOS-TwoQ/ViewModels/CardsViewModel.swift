@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseAuth
 
 @MainActor
 class CardsViewModel: ObservableObject {
@@ -33,4 +35,42 @@ class CardsViewModel: ObservableObject {
         guard let index = cardModels.firstIndex(where: { $0.id == card.id }) else { return }
         cardModels.remove(at: index)
     }
+    
+    func handleSwipe(action: SwipeAction) {
+        guard let topCard = cardModels.last else { return }
+
+        switch action {
+        case .like:
+            addMatchToFirebase(for: topCard.user)
+        case .reject:
+            break
+        }
+
+        removeCard(topCard)
+    }
+    
+    func addMatchToFirebase(for user: User) {
+        guard let currentUserId = Auth.auth().currentUser?.uid else {
+            print("No user ID found.")
+            return
+        }
+
+        let db = Firestore.firestore()
+
+        db.collection("users")
+          .document(currentUserId)
+          .collection("likedUsers")
+          .document(user.id)
+          .setData([
+              "likedUserId": user.id,
+              "timestamp": FieldValue.serverTimestamp()
+          ]) { error in
+              if let error = error {
+                  print("Error saving liked user: \(error.localizedDescription)")
+              } else {
+                  print("✅ Saved like for user: \(user.id)")
+              }
+          }
+    }
+
 }

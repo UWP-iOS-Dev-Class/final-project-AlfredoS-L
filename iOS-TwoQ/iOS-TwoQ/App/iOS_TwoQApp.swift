@@ -36,6 +36,7 @@ struct iOS_TwoQApp: App {
         WindowGroup {
             // Set the first view that the user will see: ContentView
             ContentView()
+                .background(Color("backgroundColor").ignoresSafeArea())
         }
     }
 }

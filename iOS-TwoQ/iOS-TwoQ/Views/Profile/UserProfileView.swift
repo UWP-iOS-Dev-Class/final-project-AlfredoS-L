@@ -13,7 +13,7 @@ import SwiftUI
 struct UserProfileView: View {
     
     // MARK: - Environment
-    @EnvironmentObject var authVM: AuthViewModel  // Access authentication information
+    @EnvironmentObject var authViewModel: AuthViewModel  // Access authentication information
     
     // MARK: - Navigation State
     @State private var showEditProfile = false     // Controls navigation to EditProfileView
@@ -26,7 +26,7 @@ struct UserProfileView: View {
                 
                 // MARK: - Profile Image and Info Section
                 VStack(spacing: 8) {
-                    AsyncImage(url: authVM.user?.photoURL) { phase in
+                    AsyncImage(url: authViewModel.user?.photoURL) { phase in
                         switch phase {
                         case .success(let image):
                             image
@@ -35,20 +35,18 @@ struct UserProfileView: View {
                                 .frame(width: 80, height: 80)
                                 .clipShape(Circle())
                         default:
-                            Image(systemName: "person.crop.circle.fill")
-                                .resizable()
-                                .scaledToFit()
+                            SkeletonView(.circle)
                                 .frame(width: 80, height: 80)
-                                .foregroundColor(.orange.opacity(0.4))
                         }
                     }
                     
-                    Text(authVM.user?.displayName ?? "No Name")
+                    Text(authViewModel.user?.displayName ?? "No Name")
                         .font(.headline)
+                        .foregroundStyle(Color("textColor"))
                     
-                    Text(authVM.user?.email ?? "Email Unknown")
+                    Text(authViewModel.user?.email ?? "Email Unknown")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(Color.gray)
                 }
                 .padding(.top, 20)
                 
@@ -64,10 +62,10 @@ struct UserProfileView: View {
                                 Text("Edit Profile")
                                 Spacer()
                                 Image(systemName: "chevron.right")
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(Color("textColor"))
                             }
                         }
-                        .foregroundColor(.primary)
+                        .foregroundStyle(Color("textColor"))
                         
                         Button {
                             showPreferences = true
@@ -76,16 +74,16 @@ struct UserProfileView: View {
                                 Text("Matchmaking Preferences")
                                 Spacer()
                                 Image(systemName: "chevron.right")
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(Color("textColor"))
                             }
                         }
-                        .foregroundColor(.primary)
+                        .foregroundStyle(Color("textColor"))
                     }
                     
                     // Logout Option
                     Section {
                         Button(action: {
-                            authVM.signOut()
+                            authViewModel.signOut()
                         }) {
                             HStack {
                                 Text("Logout")
@@ -93,10 +91,9 @@ struct UserProfileView: View {
                                 Image(systemName: "arrow.right.square")
                             }
                         }
-                        .foregroundColor(.red)
+                        .foregroundStyle(.red)
                     }
                 }
-                .listStyle(.insetGrouped)
                 
                 // MARK: - Navigation Destinations
                 .navigationDestination(isPresented: $showEditProfile) {
@@ -106,7 +103,7 @@ struct UserProfileView: View {
                     MatchPreferencesView()
                 }
             }
-            .navigationTitle("Settings")
+            .background(Color("backgroundColor"))
         }
     }
 }

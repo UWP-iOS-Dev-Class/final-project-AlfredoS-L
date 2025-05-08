@@ -9,15 +9,13 @@ import SwiftUI
 
 struct UserCardView: View {
     
+    @EnvironmentObject var authViewModel: AuthViewModel
     @ObservedObject var cardsViewModel: CardsViewModel
     
-//    let user: User = mockUsers[0]
-    var userCard: CardModel
-    let cardModel: CardModel
-    
+    var cardModel: CardModel
     
     var body: some View {
-        let user = userCard.user
+        let user = cardModel.user
         
         ZStack(alignment: .leading){
             ScrollView {
@@ -73,9 +71,6 @@ struct UserCardView: View {
             .scrollIndicators(.hidden)
         }
         .background(Color("backgroundColor"))
-        .onReceive(cardsViewModel.$ButtonSwipeAction, perform: { action in
-            onReceiveSwipeAction(action)
-        })
     }
 }
 
@@ -85,13 +80,21 @@ struct NamePictureView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "photo") // TODO: Add user pictures
-                .resizable()
-                .scaledToFill()
-                .clipped()
-                .frame(width: 90, height: 90)
-                .clipShape(Circle())
-                .padding(.trailing, 10)
+            AsyncImage(url: user.photoURL) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 90, height: 90)
+                        .clipShape(Circle())
+                        .padding(.trailing, 10)
+                default:
+                    SkeletonView(.circle)
+                        .frame(width: 90, height: 90)
+                        .padding(.trailing, 10)
+                }
+            }
             
             VStack(alignment: .leading) {
                 Text(user.firstName)
@@ -104,29 +107,6 @@ struct NamePictureView: View {
         }
         .foregroundStyle(Color("textColor"))
         .padding(.bottom, 15)
-    }
-}
-
-private extension UserCardView {
-    func swipeRight() {
-        cardsViewModel.removeCard(cardModel)
-    }
-
-    func swipeLeft() {
-        cardsViewModel.removeCard(cardModel)
-    }
-
-    func onReceiveSwipeAction(_ action: SwipeAction?) {
-        guard let action else { return }
-        let topCard = cardsViewModel.cardModels.last
-
-        if topCard == cardModel {
-            switch action {
-            case .reject:
-                swipeLeft()
-            case .like:
-                swipeRight()
-            }}
     }
 }
 

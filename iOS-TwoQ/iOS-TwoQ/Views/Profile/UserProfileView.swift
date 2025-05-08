@@ -134,9 +134,9 @@ struct UserProfileView: View {
                     MatchPreferencesView()
                 }
             }
-            .navigationTitle("Settings")
             .background(Color("backgroundColor"))
         }
+        .tint(Color("textColor"))
     }
 }
 

@@ -91,7 +91,7 @@ struct EditProfileView: View {
         }
       }
     }
-    .navigationTitle("Edit Profile")
+    .background(Color("backgroundColor"))
     .onAppear(perform: loadUserData)
     .alert(isPresented: $showAlert) {
       Alert(title: Text("Update"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
@@ -104,7 +104,6 @@ struct EditProfileView: View {
     } message: {
       Text("Please review and verify your changes before saving.")
     }
-    .tint(.blue)
   }
 
   var hasChanges: Bool {

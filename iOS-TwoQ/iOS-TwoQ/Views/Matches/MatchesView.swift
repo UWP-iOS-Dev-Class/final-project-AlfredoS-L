@@ -27,6 +27,7 @@ struct MatchesView: View {
                                 .padding(6)
                                 .background(Color(tag.color))
                                 .cornerRadius(8)
+                                .foregroundStyle(Color("bubblesTextColor"))
                         }
                     }
                 }

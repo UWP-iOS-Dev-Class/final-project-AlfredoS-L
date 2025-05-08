@@ -50,10 +50,8 @@ struct EditProfileView: View {
             case .success(let image):
               image.resizable().scaledToFill()
             default:
-              Image(systemName: "person.crop.circle.fill")
-                .resizable()
-                .scaledToFill()
-                .foregroundColor(.orange.opacity(0.4))
+              SkeletonView(.circle)
+                   .frame(width: 100, height: 100)
             }
           }
           .frame(width: 100, height: 100)

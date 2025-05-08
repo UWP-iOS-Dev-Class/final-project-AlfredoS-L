@@ -19,7 +19,7 @@ let mockUsers: [User] = [
         lastName: "Sandoval-Luis",
         email: "alfredosandoval@gmail.com",
         region: "north america",
-        photoURL: "",
+        photoURL: nil,
         tags: [
             Tag(text: "Diamond", color: "diamond", sfSymbolName: "trophy.fill"),
             Tag(text: "Jett", color: "Platinum", sfSymbolName: "star.fill"),

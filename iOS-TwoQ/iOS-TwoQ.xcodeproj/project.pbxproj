@@ -30,6 +30,7 @@
 		3870027D2DC27CFE00CFE492 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870027C2DC27CFE00CFE492 /* SkeletonView.swift */; };
 		3870027F2DC2830C00CFE492 /* CardLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870027E2DC2830C00CFE492 /* CardLoadingView.swift */; };
 		387002812DC2925A00CFE492 /* MatchButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387002802DC2925A00CFE492 /* MatchButtonsView.swift */; };
+		387002832DC99A6500CFE492 /* MatchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387002822DC99A6500CFE492 /* MatchesViewModel.swift */; };
 		6708CB6E2DA74987005F087B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6708CB6D2DA74987005F087B /* GoogleService-Info.plist */; };
 		6748A31F2DA74EC700AF1132 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6748A31E2DA74EC700AF1132 /* FirebaseAnalytics */; };
 		6748A3212DA74EC700AF1132 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 6748A3202DA74EC700AF1132 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -85,6 +86,7 @@
 		3870027C2DC27CFE00CFE492 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		3870027E2DC2830C00CFE492 /* CardLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLoadingView.swift; sourceTree = "<group>"; };
 		387002802DC2925A00CFE492 /* MatchButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchButtonsView.swift; sourceTree = "<group>"; };
+		387002822DC99A6500CFE492 /* MatchesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesViewModel.swift; sourceTree = "<group>"; };
 		6708CB6D2DA74987005F087B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67BD4FD02DBD898A005E5D36 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		67BD4FD22DBD89CC005E5D36 /* MatchPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchPreferencesView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				385980992D9E001F000B4E83 /* AuthViewModel.swift */,
 				387002752DB892B700CFE492 /* CardsViewModel.swift */,
+				387002822DC99A6500CFE492 /* MatchesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				3870027D2DC27CFE00CFE492 /* SkeletonView.swift in Sources */,
 				387002812DC2925A00CFE492 /* MatchButtonsView.swift in Sources */,
 				3859808A2D9DC477000B4E83 /* User.swift in Sources */,
+				387002832DC99A6500CFE492 /* MatchesViewModel.swift in Sources */,
 				3859809C2D9E3C88000B4E83 /* UserCardView.swift in Sources */,
 				385980962D9E0001000B4E83 /* LoginView.swift in Sources */,
 				385980A22DA758C3000B4E83 /* MockUser.swift in Sources */,

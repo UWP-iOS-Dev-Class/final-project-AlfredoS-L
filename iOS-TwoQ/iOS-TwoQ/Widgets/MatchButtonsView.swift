@@ -14,7 +14,7 @@ struct MatchButtonsView: View {
     var body: some View {
         HStack(spacing: 200)  {
             Button {
-                cardsViewModel.ButtonSwipeAction = .reject
+                cardsViewModel.handleSwipe(action: .reject)
             } label: {
                 Image(systemName: "xmark")
                     .font(.system(size: buttonSize, weight: .heavy))
@@ -23,7 +23,7 @@ struct MatchButtonsView: View {
             }
 
             Button {
-                cardsViewModel.ButtonSwipeAction = .like
+                cardsViewModel.handleSwipe(action: .like)
             } label: {
                 Image(systemName: "message.fill")
                     .font(.system(size: buttonSize, weight: .heavy))

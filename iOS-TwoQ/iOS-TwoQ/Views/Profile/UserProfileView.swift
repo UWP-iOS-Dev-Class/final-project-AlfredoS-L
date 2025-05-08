@@ -7,6 +7,7 @@ import SwiftUI
 import FirebaseFirestore
 
 // MARK: - Custom Remote Image Loader
+// (If you’re not using RemoteImage anywhere else, you can delete this)
 struct RemoteImage: View {
     let url: URL?
     @State private var image: Image? = nil
@@ -26,12 +27,8 @@ struct RemoteImage: View {
         }
         .frame(width: 80, height: 80)
         .clipShape(Circle())
-        .onAppear {
-            loadImage()
-        }
-        .onChange(of: url) {
-            loadImage()
-        }
+        .onAppear { loadImage() }
+        .onChange(of: url) { _ in loadImage() }
     }
 
     private func loadImage() {
@@ -45,33 +42,45 @@ struct RemoteImage: View {
             DispatchQueue.main.async {
                 self.image = Image(uiImage: uiImage)
             }
-        }.resume()
+        }
+        .resume()
     }
 }
 
 // MARK: - UserProfileView
 struct UserProfileView: View {
-    @EnvironmentObject var authVM: AuthViewModel
+    // MARK: - Environment
+    @EnvironmentObject var authViewModel: AuthViewModel
 
+    // MARK: - Navigation State
     @State private var showEditProfile = false
     @State private var showPreferences = false
-
-    @State private var firstName = ""
-    @State private var lastName = ""
-    @State private var photoURL: URL?
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
                 VStack(spacing: 8) {
-                    RemoteImage(url: photoURL)
+                    AsyncImage(url: authViewModel.user?.photoURL) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(Circle())
+                        default:
+                            SkeletonView(.circle)
+                                .frame(width: 80, height: 80)
+                        }
+                    }
 
-                    Text("\(firstName) \(lastName)".trimmingCharacters(in: .whitespaces))
+                    Text(authViewModel.user?.displayName ?? "No Name")
                         .font(.headline)
+                        .foregroundStyle(Color("textColor"))
 
-                    Text(authVM.user?.email ?? "Email Unknown")
+                    Text(authViewModel.user?.email ?? "Email Unknown")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(Color.gray)
                 }
                 .padding(.top, 20)
 
@@ -84,9 +93,10 @@ struct UserProfileView: View {
                                 Text("Edit Profile")
                                 Spacer()
                                 Image(systemName: "chevron.right")
+                                    .foregroundStyle(Color("textColor"))
                             }
-                            .foregroundColor(.black)
                         }
+                        .foregroundStyle(Color("textColor"))
 
                         Button {
                             showPreferences = true
@@ -95,26 +105,28 @@ struct UserProfileView: View {
                                 Text("Matchmaking Preferences")
                                 Spacer()
                                 Image(systemName: "chevron.right")
+                                    .foregroundStyle(Color("textColor"))
                             }
-                            .foregroundColor(.black)
                         }
+                        .foregroundStyle(Color("textColor"))
                     }
 
                     Section {
-                        Button {
-                            authVM.signOut()
-                        } label: {
+                        Button(action: {
+                            authViewModel.signOut()
+                        }) {
                             HStack {
                                 Text("Logout")
                                 Spacer()
                                 Image(systemName: "arrow.right.square")
                             }
                         }
-                        .foregroundColor(.red)
+                        .foregroundStyle(.red)
                     }
                 }
                 .listStyle(.insetGrouped)
 
+                // MARK: - Navigation Destinations
                 .navigationDestination(isPresented: $showEditProfile) {
                     EditProfileView()
                 }
@@ -123,26 +135,7 @@ struct UserProfileView: View {
                 }
             }
             .navigationTitle("Settings")
-            .onAppear(perform: loadUserData)
-        }
-    }
-
-    // MARK: - Load Name and Photo from Firestore
-    private func loadUserData() {
-        guard let uid = authVM.user?.uid else { return }
-
-        Firestore.firestore().collection("users").document(uid).getDocument { document, error in
-            if let document = document, document.exists {
-                let data = document.data()
-                self.firstName = data?["firstName"] as? String ?? ""
-                self.lastName = data?["lastName"] as? String ?? ""
-
-                if let urlString = data?["photoURL"] as? String {
-                    self.photoURL = URL(string: urlString)
-                }
-            } else {
-                print("Error loading user data: \(error?.localizedDescription ?? "unknown error")")
-            }
+            .background(Color("backgroundColor"))
         }
     }
 }

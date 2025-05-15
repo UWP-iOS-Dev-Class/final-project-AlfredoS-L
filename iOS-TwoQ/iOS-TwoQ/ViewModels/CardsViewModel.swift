@@ -14,25 +14,7 @@ class CardsViewModel: ObservableObject {
     @Published var cardModels = [CardModel]()
     @Published var ButtonSwipeAction: SwipeAction?
     
-    private var matchService: MatchService?
     private let service: CardService
-    
-    func configure(with me: User) {
-        matchService = MatchService(me: me)
-      }
-
-      // step 2: actually fetch
-    func loadMatches(limit: Int = 10) async {
-        guard let svc = matchService else { return }
-        do {
-            let matches = try await svc.fetchMatches(limit: limit)
-            DispatchQueue.main.async {
-                self.cardModels = matches
-            }
-        } catch {
-            print("❌ Failed to load matches:", error)
-        }
-    }
     
     init(service: CardService) {
         self.service = service

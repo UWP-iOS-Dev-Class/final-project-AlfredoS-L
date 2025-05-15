@@ -33,13 +33,3 @@ struct User: Identifiable, Codable, Hashable {
     }
     // game specific user information
 }
-
-extension User {
-  /// Finds the rank‑tag, then converts to our `Rank` enum
-  var rank: Rank? {
-    tags
-      .first { $0.color != "Region" && $0.color != "mainAgent" }
-      .flatMap { Rank(rawValue: $0.text) }
-  }
-}
-

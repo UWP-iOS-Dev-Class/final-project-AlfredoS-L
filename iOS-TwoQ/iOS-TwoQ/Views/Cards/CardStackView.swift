@@ -29,6 +29,15 @@ struct CardStackView: View {
                         CardLoadingView()
                     }
                 }
+                .onAppear {
+                  guard let me = authViewModel.currentUser else { return }
+                  // tell your view model who “me” is
+                  cardsViewModel.configure(with: me)
+                }
+                .task {
+                  // then fetch matches once “me” is set
+                  await cardsViewModel.loadMatches()
+                }
             }
         }
     }

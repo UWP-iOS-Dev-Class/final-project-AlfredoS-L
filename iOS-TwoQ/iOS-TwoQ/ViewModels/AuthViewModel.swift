@@ -6,6 +6,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import Combine
 
 enum AuthState {
     case signedOut
@@ -15,18 +16,26 @@ enum AuthState {
 
 class AuthViewModel: ObservableObject {
     
+    // 1) keep the FirebaseAuth user around
     @Published var user: FirebaseAuth.User?
+    // 2) add your Firestore-backed User model
+    @Published var appUser: User?
     @Published var authState: AuthState = .signedOut
     @Published var errorMessage: String?
     
     private let auth = Auth.auth()
     private let db   = Firestore.firestore()
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
+        // grab the existing FirebaseAuth user
         self.user = auth.currentUser
+        
         if let uid = user?.uid {
-            // check their profileComplete flag
+            // check their profileComplete flag (your existing helper)
             checkProfile(for: uid)
+            // **NEW** load their full Firestore User doc
+            loadAppUser(for: uid)
         } else {
             authState = .signedOut
         }
@@ -59,6 +68,8 @@ class AuthViewModel: ObservableObject {
                 } else {
                     self.user = user
                     self.authState = .signedInButIncomplete
+                    // **NEW** immediately attempt to load their document (it exists, even if incomplete)
+                    self.loadAppUser(for: user.uid)
                 }
             }
         }
@@ -79,14 +90,16 @@ class AuthViewModel: ObservableObject {
             }
             
             self.user = user
-            // **instead of forcing incomplete**, check their flag
+            // check profileComplete like before…
             self.checkProfile(for: user.uid)
+            // **NEW** load their Firestore User model so you can pass it into MatchService
+            self.loadAppUser(for: user.uid)
+            
             completion(true)
         }
     }
     
     func finishOnboarding() {
-        // we’re fully onboarded now
         authState = .signedIn
     }
     
@@ -94,6 +107,7 @@ class AuthViewModel: ObservableObject {
         do {
             try auth.signOut()
             user      = nil
+            appUser   = nil     // clear out your Firestore User as well
             authState = .signedOut
         } catch {
             errorMessage = error.localizedDescription
@@ -101,7 +115,6 @@ class AuthViewModel: ObservableObject {
     }
     
     // MARK: ——————————————————————————————
-    // helper to read profileComplete from Firestore
     private func checkProfile(for uid: String) {
         db.collection("users").document(uid).getDocument { [weak self] doc, error in
             guard let self = self else { return }
@@ -114,4 +127,28 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
+    
+    // ——— NEW METHOD ———
+    /// Loads the Firestore `users/{uid}` doc into your own `User` struct
+    private func loadAppUser(for uid: String) {
+        db.collection("users").document(uid).getDocument { [weak self] snapshot, error in
+            guard let self = self else { return }
+            if let error = error {
+                print("❌ loadAppUser error:", error)
+                return
+            }
+            guard let snapshot = snapshot, snapshot.exists else {
+                print("⚠️ no user doc for uid:", uid)
+                return
+            }
+            
+            do {
+                // requires `import FirebaseFirestoreSwift`
+                self.appUser = try snapshot.data(as: User.self)
+            } catch {
+                print("❌ decoding User failed:", error)
+            }
+        }
+    }
 }
+

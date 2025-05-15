@@ -15,6 +15,7 @@ struct User: Identifiable, Codable, Hashable {
     var email: String
     var region: String
     var photoURL: URL?
+    var profileComplete: Bool = true // temp
     // supplementary user information
     var tags: [Tag] = []
     
@@ -24,9 +25,21 @@ struct User: Identifiable, Codable, Hashable {
             "lastName":  lastName,
             "email":     email,
             "region":    region,
+            "photoURL":        photoURL?.absoluteString as Any,
+            "profileComplete": profileComplete,
             // ↳ Store tags as an array of dictionaries:
             "tags":      tags.map { $0.dictionary }
         ]
     }
     // game specific user information
 }
+
+extension User {
+  /// Finds the rank‑tag, then converts to our `Rank` enum
+  var rank: Rank? {
+    tags
+      .first { $0.color != "Region" && $0.color != "mainAgent" }
+      .flatMap { Rank(rawValue: $0.text) }
+  }
+}
+
